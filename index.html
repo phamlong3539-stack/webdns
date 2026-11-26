@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#060d1a" />
+  <meta name="description" content="Truy cập cấu hình DNS miễn phí nhanh chóng & dễ dàng" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DNS Hub" id="og-title" />
+  <meta property="og:description" content="Kết nối DNS miễn phí · Nhanh · Ổn định" id="og-desc" />
+
+  <title id="page-title">DNS Hub</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- Animated background canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Toast container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ══════════════ APP WRAPPER ══════════════ -->
+  <main class="app-wrapper">
+
+    <!-- ── HERO ── -->
+    <header class="glass hero fade-in" id="hero-card">
+      <div class="hero-icon" id="hero-icon">🌐</div>
+      <span class="hero-org" id="hero-org">LAMDev Community · Máy Chủ DNS Miễn Phí</span>
+      <h1 class="hero-brand" id="hero-brand">DNS Hub</h1>
+      <p class="hero-tagline" id="hero-tagline">Kết nối DNS miễn phí · Nhanh · Ổn định</p>
+      <div class="announcement-bar" id="announcement-bar"></div>
+    </header>
+
+    <!-- ── STATUS BAR ── -->
+    <div class="glass status-bar fade-in" id="status-bar" style="animation-delay:.08s">
+      <span class="status-dot checking" id="status-dot"></span>
+      <span class="status-text" id="status-text">
+        <strong>Đang kiểm tra</strong> kết nối đến nguồn DNS…
+      </span>
+      <button class="status-retry" id="status-retry" onclick="App.retryCheck()" aria-label="Thử lại kết nối">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M23 4v6h-6M1 20v-6h6" />
+          <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+        </svg>
+        Thử lại
+      </button>
+    </div>
+
+    <!-- ── OFFLINE FALLBACK NOTICE ── -->
+    <div class="glass offline-notice" id="offline-notice" role="alert">
+      <div class="offline-notice-title">⚠️ Không thể tự động đồng bộ nguồn DNS</div>
+      <p class="offline-notice-desc">
+        Nguồn gốc có thể đang bận, hết VPS, bảo trì hoặc bị trình duyệt chặn CORS. Bạn có thể nhấn <strong>Thử
+          lại</strong> hoặc mở trực tiếp trang nguồn bên dưới:
+      </p>
+      <div class="offline-notice-actions">
+        <a class="btn btn-secondary" id="offline-direct-link" href="#" target="_blank" rel="noopener">Mở trực tiếp nguồn
+          DNS ↗</a>
+      </div>
+    </div>
+
+    <!-- ── SERVER CARDS ── -->
+    <section class="cards-section fade-in" id="cards-section" style="animation-delay:.16s">
+      <p class="section-label">Chọn máy chủ DNS</p>
+      <div id="cards-list">
+        <!-- Cards injected by app.js -->
+        <div class="glass server-card skeleton" style="height:160px"></div>
+      </div>
+    </section>
+
+    <!-- ── INSTALL GUIDE ── -->
+    <section class="glass guide-section fade-in" id="guide-section" style="animation-delay:.24s">
+      <p class="section-label">Hướng dẫn cài đặt</p>
+      <ol class="steps-list" id="steps-list">
+        <!-- Steps injected by app.js -->
+      </ol>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer-section fade-in" style="animation-delay:.32s">
+      <div class="social-links" id="social-links"></div>
+      <p class="footer-text" id="footer-text"></p>
+    </footer>
+
+  </main>
+
+  <!-- Scripts: config first, then app -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
